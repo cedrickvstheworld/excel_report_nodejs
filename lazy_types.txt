@@ -1,0 +1,72 @@
+
+            // const {
+            //     date,
+            //     plate_no,
+            //     model,
+            //     w_nw,
+            //     repair_type,
+            //     bay_number,
+            //     km_check_up,
+            //     series,
+            //     as_c,
+            //     as_details,
+            //     aj_c,
+            //     aj_details,
+            //     customer_arrival,
+            //     appointment_time,
+            //     cat_guard,
+            //     cat_receptionist,
+            //     ticketing_time,
+            //     customer_wt,
+            //     sa,
+            //     sa_rt_s,
+            //     sa_rt_e,
+            //     reception_lead_time,
+            //     reception_idle_time,
+            //     technician_cit,
+            //     technician_idle_time,
+            //     repair_s,
+            //     repair_e,
+            //     repair_lead_time,
+            //     repair_idle_time,
+            //     carwash_s,
+            //     carwash_e,
+            //     carwash_lead_time,
+            //     release_date,
+            //     car_out_time,
+            //     total_em_lt,
+            //     total_lt,
+            //     promised_time,
+            //     otd,
+            //     em60_ach,
+            //     remarks
+            // } = rowData
+
+
+                        // currentRow.getCell(4).value = rowData['plate_no']
+            // currentRow.getCell(9).value = rowData['km_check_up']
+            // currentRow.getCell(10).value = rowData['series']
+            // currentRow.getCell(12).value = rowData['as_details'] || ''
+            // if (!rowData['as_details']) {
+            //     currentRow.getCell(11).value = 'WITHOUT'
+            // }
+            // else {
+            //     currentRow.getCell(11).value = 'WITH'
+            // }
+            // currentRow.getCell(13).value = rowData['aj_e']
+            // currentRow.getCell(14).value = rowData['aj_details']
+            // currentRow.getCell(17).value = rowData['cat_guard']
+            // currentRow.getCell(18).value = rowData['cat_receptionist']
+            // currentRow.getCell(21).value = rowData['sa']
+            // currentRow.getCell(22).value = rowData['sa_rt_s']
+            // currentRow.getCell(23).value = rowData['sa_rt_e']
+            // // currentRow.getCell(25).value = rowData['idle_time']
+            // currentRow.getCell(26).value = rowData['technician_cit']
+            // // currentRow.getCell(27).value = rowData['idle_time_2']
+            // currentRow.getCell(30).value = rowData['repair_s']
+            // currentRow.getCell(31).value = rowData['repair_e']
+            // // currentRow.getCell(33).value = rowData['idle_time_3']
+            // currentRow.getCell(34).value = rowData['carwash_s']
+            // currentRow.getCell(35).value = rowData['carwash_e']
+            // currentRow.getCell(37).value = rowData['release_date']
+            // currentRow.getCell(41).value = rowData['promised_time']
