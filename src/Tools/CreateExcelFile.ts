@@ -1,16 +1,17 @@
 import Excel from 'exceljs'
 import fs from 'fs'
+import { ExcelReport } from '../types/interfaces' 
 
 
 export default class GenExcel {
     public workbook: any
     public worksheet: any
     public startRowMain: number
-    private data: Array<any>
+    private data: Array<ExcelReport>
     public filename: string
     public folder_name: string
 
-    constructor(data: Array<any>, filename: string) {
+    constructor(data: Array<ExcelReport>, filename: string) {
         this.workbook = new Excel.Workbook()
         this.startRowMain = 9
         this.data = data
@@ -18,14 +19,12 @@ export default class GenExcel {
         this.filename = filename.replace(/ /g, '')
     }
 
-    public createFile() {
-        this.workbook.xlsx.readFile('excel_template.xlsx')
+    public async createFile() {
+        await this.workbook.xlsx.readFile('excel_template.xlsx')
             .then(() => {
                 
                 this.worksheet = this.workbook.getWorksheet(1)
                 this.populateMain()
-                this.saveNew()
-                return 0
             })
     }
 
@@ -148,18 +147,20 @@ export default class GenExcel {
     }
     // end of section ############################################################################
 
-    private saveNew() {
-        const createFolderIfNotExistAndCreateFile = async () => {
-            await fs.access(this.folder_name, (error) => {
+    public async saveNew() {
+        const file: string = `./${this.folder_name}/${this.filename}.xlsx`
+        await this.createFile()
+        .then(() => {
+            fs.access(this.folder_name, (error) => {
                 if (error && error.code === 'ENOENT') {
                     fs.mkdir(this.folder_name, () => {})
                 }
             })
-            const file = `./${this.folder_name}/${this.filename}.xlsx`
             this.workbook.xlsx.writeFile(file)
-        }
+        })
         
-        createFolderIfNotExistAndCreateFile()
+        return Promise.resolve(file) 
+
     }
 
 }

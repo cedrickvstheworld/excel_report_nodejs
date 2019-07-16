@@ -1,6 +1,7 @@
 import express,  { Request, Response } from 'express'
 import GenExcel from '../Tools/CreateExcelFile'
-import path from 'path'
+import { ExcelReport } from '../types/interfaces' 
+
 
 class Router {
     public router: any
@@ -13,11 +14,11 @@ class Router {
         this.router.get('/', (req: Request, res: Response) => {
 
             //test data
-            const data: Array<any> = [
+            const data: Array<ExcelReport> = [
                 {
                     date: 'Jan 21, 2019',
                     plate_no: 'AWER-23',
-                    model: 'honda',
+                    // model: 'honda',
                     w_nw: 'w',
                     repair_type: 'EM',
                     bay_number: '89',
@@ -62,11 +63,15 @@ class Router {
 
             const filename: string = 'testName'
             const createExcelReport: any = new GenExcel(data, filename)  
-            const createFileAndDownload = async () => {
-                await createExcelReport.createFile()
-                res.download(`./excel-reports/${filename}.xlsx`)
-            } 
-            createFileAndDownload()
+            createExcelReport.saveNew()
+                .then((file: string) => {
+                    console.log(file)
+                    res.status(200).download(file)
+                })
+                .catch((error: string) => {
+                    console.log(error)
+                    res.status(404)
+                })
         })
         return this.router
     }
